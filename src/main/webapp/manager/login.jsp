@@ -26,7 +26,7 @@ body{
 	position: absolute;
 	top: 18%;
 	left:40%;
-    background: #F5E79E;
+    background: #31b0d5;
 }
 	
 .form {
@@ -83,7 +83,7 @@ body{
         <div class="logoImg"> </div>
 		<div class="login-box">
 			<div class="login-title text-center">
-				<h1><small>登陆</small></h1>
+				<h1><small>管理员登陆</small></h1>
 			</div>
 			<div class="login-content ">
 			<div class="form">

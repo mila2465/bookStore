@@ -15,26 +15,28 @@ import com.zhu.domain.User;
 import com.zhu.service.OrderService;
 import com.zhu.service.UserService;
 
+/**
+ * 订单管理
+ */
 @Controller
 @RequestMapping("/manager")
 public class OrderController {
 
 	private final int pageSize=15;
+
 	@Autowired
 	private OrderService service;
+
 	@Autowired
 	private UserService userService;
-	
-//	@RequestMapping("/getAllOrder")
-//	public PageInfo<Order> getAllOrder(@RequestParam(defaultValue="1")int pageNum){
-//		return service.getAllOrder(pageNum);
-//	}
-	
-//	@RequestMapping("/getAllOrderByUser")
-//	public PageInfo<Order> getAllOrderByUser(@RequestParam String id,@RequestParam(defaultValue="1")int pageNum){
-//		return service.getAllOrderByUser(id, pageNum);
-//	}
-	
+
+	/**
+	 * 根据订单状态获取订单
+	 * @param state
+	 * @param pageNum
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/getAllOrderByState")
 	public String getAllOrderByState(@RequestParam boolean state,@RequestParam(defaultValue="1")int pageNum,Model model){
 		PageInfo<Order> pageInfo=service.getAllOrderByState(state, pageNum,pageSize);
@@ -42,42 +44,31 @@ public class OrderController {
 		model.addAttribute("url","/getAllOrderByState");
 		return "manager/listOrder";
 	}
-	
-//	@RequestMapping("/getAllOrderByUsernameAndState")
-//	public String getAllOrderByUserAndState(@RequestParam String username,@RequestParam boolean state,
-//			@RequestParam(defaultValue="1")int pageNum,Model model){
-//		   User user=userService.findUserByUsername(username);
-//		   PageInfo<Order> pageInfo=service.getAllOrderByUserAndState(user.getId(), state, pageNum, pageSize);
-//            model.addAttribute("url","getAllOrderByUsernameAndState");
-//		model.addAttribute("pageInfo",pageInfo);
-//		return "manager/listOrder";
-//	}
-	
-	
-	
+
+	/**
+	 * 查询订单详情
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/findOrderById")
 	public String findOrderById(@RequestParam String id,Model model) {
 		model.addAttribute("order",service.findOrderById(id));
 		System.out.println(service.findOrderById(id).getOrdertime());
 		return "manager/orderDetail";
 	}
-	
-	//因为没有发货状态
-//	@RequestMapping("/deleteOrder")
-//	public String deleteOrder(@RequestParam String id) {
-//		service.deleteOrder(id);
-//	}
-	
-	
+
+	/**
+	 * 更新订单状态
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/updateOrderState")
 	public String updateOrderState(@RequestParam String id,Model model) {
 		service.updateOrderState(id);
 		model.addAttribute("msg","订单发货成功");
 		return "manager/right";
 	}
-	
-	
-	
-	
-	
+
 }

@@ -13,14 +13,23 @@ import com.zhu.domain.Msg;
 import com.zhu.domain.User;
 import com.zhu.service.UserService;
 
+/**
+ * 用户登录相关
+ */
 @Controller
 @RequestMapping("/client")
 public class UserController {
 
 	@Autowired
 	private UserService service;
-	
-	//登录
+
+	/**
+	 * 用户登录
+	 * @param session
+	 * @param username
+	 * @param password
+	 * @return
+	 */
 	@RequestMapping("/login")
 	@ResponseBody
 	public Msg login(HttpSession session,@RequestParam String username,@RequestParam String password) {
@@ -34,9 +43,11 @@ public class UserController {
 		 }
 	}
 
-	/*
-	  * 注册
-	  *判断该用户名是否存在、若存在则应该换一个名、不存在就注册 
+	/**
+	 * 用户注册
+	 * @param user
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping("/regist")
 	@ResponseBody
@@ -48,8 +59,12 @@ public class UserController {
 	    	 return new Msg(0,"该用户名已被注册，请重新填写");
 	     } 
 	}
-	
-	
+
+	/**
+	 * 用户退出
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/loginout")
 	public String loginout(HttpSession session) {
 		session.invalidate();

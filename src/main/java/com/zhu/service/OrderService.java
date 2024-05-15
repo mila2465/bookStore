@@ -123,17 +123,6 @@ public class OrderService {
 		}	
 		
 	}
-	
-//	//先判断是否收货
-//	//先删orderItem，再删order
-//	public void deleteOrder(String id) {
-//		Order order=mapper.find(id);
-//		if(order.isState()) {//
-//			
-//		}
-//		orderItemMapper.deleteByOrder_id(id);
-//		mapper.delete(id);
-//	} 
 	  
 	public void updateOrderState(String id) {
 		mapper.updateOrderState(id);

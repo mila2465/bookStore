@@ -26,6 +26,7 @@ import com.zhu.domain.User;
 import com.zhu.service.BookService;
 
 /**
+ * 用户购物车
  * 用session保存信息
  * @param
  */
@@ -35,30 +36,39 @@ public class CartController {
     
 	@Autowired
 	private BookService bookService;
-	
-	//添加到购物车
+
+	/**
+	 * 添加商品到购物车
+	 * @param request
+	 * @param id
+	 * @param count
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/addToCart")
 	@ResponseBody
 	public Msg addToCart(HttpServletRequest request,@RequestParam String id,@RequestParam  int count,Model model) {
 		User user=(User) request.getSession().getAttribute("user");    
 		Cart cart=(Cart) request.getSession().getAttribute("cart");
 
-	
 		if(user!=null) {
 			if(cart==null) {
           	  cart=new Cart();
             }
 			cart.add(bookService.findBookById(id),count);
             request.getSession().setAttribute("cart", cart);
-            return new Msg(1,null);
+            return new Msg(1,"添加成功");
 		}else { 
 			return new Msg(0,"对不起，请先登录");  
 		}
-		
-		
 	}
-	
-	
+
+	/**
+	 * 修改购物车内商品数量
+	 * @param session
+	 * @param id
+	 * @param count
+	 */
 	@RequestMapping("/changeCount")
 	@ResponseBody
 	public void changeCount(HttpSession session,@RequestParam String id,@RequestParam int count) {
@@ -66,7 +76,14 @@ public class CartController {
 		cart.changeCount(id,count);
 		session.setAttribute("cart", cart);
 	}
-   //从购物车中删除
+
+	/**
+	 * 从购物车内删除商品
+	 * @param session
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/deleteFromCart")
 	public String deleteFromCart(HttpSession session,@RequestParam String id,Model model) {
 
@@ -80,8 +97,14 @@ public class CartController {
 	    }
 	      return "client/listCart";
 	}
-	
-	//批量删除
+
+	/**
+	 * 批量删除商品
+	 * @param session
+	 * @param ids
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/deleteManyFromCart")
 	@ResponseBody
 	public Msg deleteManyFromCart(HttpSession session,String ids,Model model) {
@@ -97,8 +120,13 @@ public class CartController {
 	    }
 	      return new Msg(1,"删除成功");
 	}
-	
-	//清空购物车
+
+	/**
+	 * 清空购物车
+	 * @param session
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/clearCart")
 	public String clearCart(HttpSession session,Model model){
 	    session.removeAttribute("cart");

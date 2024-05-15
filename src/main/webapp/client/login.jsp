@@ -17,7 +17,7 @@ html {
 body{
   height: 100%;
 	width: 100%;
-	 background: url(../images/img.jpg) no-repeat top left;
+	 background: url(../images/login.jpg) no-repeat top left;
 	 background-size: cover;
 }
 .login-box {
@@ -26,7 +26,7 @@ body{
 	position: absolute;
 	top: 18%;
 	left:40%;
-    background: #F5E79E;
+    background: #31b0d5;
 }
 	
 .form {

@@ -23,10 +23,6 @@ import com.zhu.domain.Order;
 import com.zhu.domain.User;
 import com.zhu.service.OrderService;
 
-/**
- * 还未涉及到批量删除
- * @author 遗忘之前
- * */
 @Controller("ClientOrderController")
 @RequestMapping("/client")
 public class OrderController {

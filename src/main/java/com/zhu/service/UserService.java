@@ -28,16 +28,15 @@ public class UserService {
 		mapper.add(user);
 	}
 	
-	
 	//判断该用户名是否已被使用
 	public Boolean  isUsernameExist(String username) {
 		User user=mapper.findByUsername(username);
-			if(user==null) return false;
-			else           return  true;
-		
+			if(user==null)
+				return false;
+			else
+				return  true;
 	}
-	
-	
+
 	public User findUserByUsername(String username) {
 		User user=mapper.findByUsername(username);
 		return user;

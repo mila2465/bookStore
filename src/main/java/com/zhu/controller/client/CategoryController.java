@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zhu.domain.Category;
 import com.zhu.service.CategoryService;
 
+/**
+ * 图书分类
+ */
 @RestController("ClientCategoryController")
 @RequestMapping("/client")
 public class CategoryController {
@@ -27,27 +30,6 @@ public class CategoryController {
 	@RequestMapping("/findCategoryById")
 	public Category findCategoryById(@RequestParam String id){
 		return service.findCategoryById(id);
-	}
-	
-	@RequestMapping("/addCategory")
-	public void addCategory(Category category) {
-		service.addCategory(category);
-	}
-	
-	@RequestMapping("/updateCategory")
-	public void updateCategory(Category category) {
-		service.updateCategory(category);
-	}
-	
-	
-	
-	@RequestMapping("/deleteCategory")
-	public String deleteCategory(@RequestParam String id) {
-		if(service.deleteCategory(id)) {
-			return "success";
-		}else {
-			return "error";
-		}
 	}
 
 }

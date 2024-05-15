@@ -14,6 +14,9 @@ import com.zhu.domain.Category;
 import com.zhu.service.BookService;
 import com.zhu.service.CategoryService;
 
+/**
+ *	用户图书查询
+ */
 @Controller("ClientBookController")
 @RequestMapping("/client")
 public class BookController {
@@ -23,15 +26,13 @@ public class BookController {
 	private BookService service;
 	@Autowired
     private CategoryService categoryService;
-	
-/*
- * * 
-解决办法：
-仅对主表一方进行分页。连接表的数据分开查询即可。 
-当代码块中有多个查询时，pagehelper 自动对下方最先执行的sql进行分页。
- 
- 你说的对 必须分开 不要 一句sql left join 都连完 ，指定 属性 association collection就行了
-	 * */
+
+	/**
+	 * 查询所有图书
+	 * @param pageNum
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/getAllBook")
 	public String getAllBookAndCategory(@RequestParam(defaultValue="1")int pageNum,Model model){
 		PageInfo<Book> pageInfo=service.getAllBook(pageNum,pageSize);
@@ -41,8 +42,14 @@ public class BookController {
 		model.addAttribute("url","getAllBook");	
 		return "client/body";  
 	}
-	
-     
+
+	/**
+	 * 分类查询图书
+	 * @param category_id
+	 * @param pageNum
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/getAllBookByCategory")
 	public String getAllBookByCategory(@RequestParam String category_id,
 			         @RequestParam(defaultValue="1")int pageNum,Model model){
@@ -53,7 +60,14 @@ public class BookController {
 		model.addAttribute("url","getAllBookByCategory");
 		return "client/body";
 	}
-	
+
+	/**
+	 *	按书名模糊查询图书
+	 * @param book
+	 * @param pageNum
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/queryBook")
 	public String queryBook(Book book,@RequestParam(defaultValue="1")int pageNum,Model model) {
 		PageInfo<Book> pageInfo=service.queryBook(book, pageNum,pageSize);
@@ -64,7 +78,13 @@ public class BookController {
 		model.addAttribute("query_name",book.getName());
 		return "client/body";
 	}
-	
+
+	/**
+	 * 查询图书详情
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/findBookById")
 	public String findBookById(@RequestParam String id,Model model) {
 		Book book=service.findBookById(id);

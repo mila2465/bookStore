@@ -17,7 +17,6 @@
     </style>
     <script type="text/javascript">
     	function test(e){
-//  		$(e).style.display = $(e).style.display == 'block'? 'none':'block';
 			var element = document.getElementById(e);
 			element.style.display = element.style.display == 'block'? 'none':'block';
     	}
@@ -29,8 +28,6 @@
 			<li><a href="${pageContext.request.contextPath }/manager/login.jsp" target="_parent">登录</a></li>
 		</c:if>
 		<c:if test="${manager!=null }">
-			<li><a class="btn btn-link navbar-btn navbar-right" href="${pageContext.request.contextPath }/manager/loginout">安全退出</a></li>
-			<br/><br/>
 			<li>
 				<a href="#" onclick="test('menu1')">分类管理
 					<div id="menu1" class="menu">

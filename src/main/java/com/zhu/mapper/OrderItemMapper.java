@@ -9,6 +9,5 @@ import com.zhu.domain.OrderItem;
 public interface OrderItemMapper {
 
 	public void add(OrderItem orderItem);
-	public void deleteByOrder_id(@Param("order_id")String order_id);
 	
 }

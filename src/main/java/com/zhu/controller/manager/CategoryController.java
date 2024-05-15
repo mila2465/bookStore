@@ -15,38 +15,66 @@ import com.zhu.domain.Category;
 import com.zhu.domain.Msg;
 import com.zhu.service.CategoryService;
 
+/**
+ * 分类修改
+ */
 @Controller
 @RequestMapping("/manager")
 public class CategoryController {
 	
 	@Autowired
 	private CategoryService service;
-	
+
+	/**
+	 * 获取所有分类
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/getAllCategory")
 	public String getAllCategory(Model model){
 		model.addAttribute("categories",service.getAllCategory());
 		return "manager/listCategory";
 	}
-	
+
+	/**
+	 *	添加图书时获取分类列表
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/forAddBookJsp")
 	public String ForAddBookJsp(Model model) {
 		model.addAttribute("categories",service.getAllCategory());
 		return "manager/addBook";
 	}
-	
+
+	/**
+	 * 根据分类id获取分类
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("/findCategoryById")
 	@ResponseBody
 	public Msg findCategoryById(@RequestParam String id) {
 		return new Msg(1,service.findCategoryById(id));
 	}
-	
+
+	/**
+	 * 添加分类
+	 * @param category
+	 * @return
+	 */
 	@RequestMapping("/addCategory")
 	@ResponseBody
 	public Msg addCategory(Category category) {
 		service.addCategory(category);
 		return new Msg(1,"添加成功");
 	}
-	
+
+	/**
+	 * 更新分类
+	 * @param category
+	 * @return
+	 */
 	@RequestMapping("/updateCategory")
 	@ResponseBody
 	public Msg updateCategory(Category category) {
@@ -58,8 +86,12 @@ public class CategoryController {
 		}
 		return new Msg(1,"更新成功");
 	}
-	
-	
+
+	/**
+	 * 删除分类
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("/deleteCategory")
 	@ResponseBody
 	public Msg deleteCategory(@RequestParam String id) {

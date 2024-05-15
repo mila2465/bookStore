@@ -9,6 +9,8 @@ import com.zhu.domain.User;
 public interface UserMapper {
   
 	public User findByUsernameAndPwd(@Param("username")String username,@Param("password")String password);
+
 	public User findByUsername(@Param("username")String username);
+
 	public void add(User user);
 }

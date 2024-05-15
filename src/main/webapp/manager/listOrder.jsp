@@ -13,23 +13,6 @@
   <body>
        <div class="container col-sm-10 col-sm-offset-1">
              <h2 class="page-header">订单列表</h2>
-             
-             <!-- 
-                 <div class="row col-sm-offset-7">
-                    <form action="${pageContext.request.contextPath }/manager/getAllOrderByUsernameAndState">
-                         <input type="hidden" name="state" value="${pageInfo.list[0].state}">
-                          <div class="form-group col-sm-8">
-							  <input class="form-control" placeholder="用户名搜索"  name="name"/>
-						  </div>
-						  <div class="form-group">
-							    <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"><span></button>
-						  </div>
-                    </form>
-             </div>
-              -->
-             
-              
-             
     <table class="table table-hover" width="60%">
     	<tr>
     		<td>订单号</td>

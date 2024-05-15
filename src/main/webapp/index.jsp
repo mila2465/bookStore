@@ -4,7 +4,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>  
-    <title>正经的书店</title>
+    <title>书店</title>
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 	<script src="/jquery-1.12.4.min.js"></script>
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
@@ -27,7 +27,7 @@
 			
 			<nav id="nav" class="navbar navbar-inverse">
 				<div class="navbar-header">
-					<a href="" class="navbar-brand">正经的书店</a>
+					<a href="" class="navbar-brand">书店</a>
 					<button class="navbar-toggle collapsed" data-target="#mynavbar">
 					 </button>
 				</div>
@@ -66,58 +66,14 @@
   	 </div>
   	 
   	 <script>
-  	/*
-  	 
-  	var iframes = document.getElementsByTagName('iframe');
-
-    for (var i = 0, j = iframes.length; i < j; ++i) {
-        // 放在闭包中，防止iframe触发load事件的时候下标不匹配
-        (function(_i) {
-            iframes[_i].onload = function() {
-                // 提前还原高度
-                this.setAttribute('height', 'auto'); // 或设为''
-                // 再在下一轮事件循环中设置新高度
-                setTimeout(function() {
-                    iframes[_i].setAttribute('height', iframes[_i].contentWindow.document.body.scrollHeight);
-                }, 0);
-            }
-        })(i);
-    }
-  	*/
-
-   /* var iframes = document.getElementsByTagName('iframe');
-
-    for (var i = 0, j = iframes.length; i < j; ++i) {
-        // 放在闭包中，防止iframe触发load事件的时候下标不匹配
-        (function(_i) {
-            iframes[_i].onload = function() {
-            	 this.style.visibility = 'hidden';
-            	 // this.style.display = 'none';
-
-                // 提前还原高度
-                this.setAttribute('height', 'auto'); // 或设为''
-
-                // 再在下一轮事件循环中设置新高度
-                setTimeout(function() {
-                    iframes[_i].setAttribute('height', iframes[_i].contentWindow.document.body.scrollHeight);
-
-                    iframes[_i].style.visibility = 'visible';
-                    //iframes[_i].style.display = 'block';
-                }, 0);
-            }
-        })(i);
-    }	  
-    
-    */
     var iframes = document.getElementsByTagName('iframe');
 
     for (var i = 0, j = iframes.length; i < j; ++i) {
-        // 放在闭包中，防止iframe触发load事件的时候下标不匹配
+
         (function(_i) {
             iframes[_i].onload = function() {
                 this.contentWindow.onbeforeunload = function() {
                     iframes[_i].style.visibility = 'hidden';
-                    // iframes[_i].style.display = 'none';
 
                     iframes[_i].setAttribute('height', 'auto');
                 };
@@ -125,7 +81,6 @@
                 this.setAttribute('height', this.contentWindow.document.body.scrollHeight);
 
                 this.style.visibility = 'visible';
-                // this.style.display = 'block';
             };
         })(i);
     }
