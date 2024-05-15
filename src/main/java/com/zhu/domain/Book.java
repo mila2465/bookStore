@@ -11,7 +11,6 @@ public class Book {
 	private double price;
 	private String image;
 	private String description;
-	
 	private String category_id;//书类别
 	private Category category;
 

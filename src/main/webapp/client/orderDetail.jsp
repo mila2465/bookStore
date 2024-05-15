@@ -21,7 +21,7 @@
        }
        .user{
         color:grey;
-        font-size:20;
+        font-size:20px;
        }
     </style>
   </head>
@@ -55,7 +55,7 @@
 					    		</div>
 					    	</td>
 					    	<td>
-					        	<a href="${pageContext.request.contextPath}/client/findBookById?id=${orderitem.book.id}">${orderitem.book.name }</td></a>
+					        	<a href="${pageContext.request.contextPath}/client/findBookById?id=${orderitem.book.id}">${orderitem.book.name }</a>
 				    	    </td>
 				    		<td>￥${orderitem.book.price }</td>
 				    		<td>${orderitem.quantity }</td>

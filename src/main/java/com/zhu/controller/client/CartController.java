@@ -55,6 +55,9 @@ public class CartController {
 			if(cart==null) {
           	  cart=new Cart();
             }
+			if(count < 0||count == 0){
+				return new Msg(0,"添加商品数量必须大于0");
+			}
 			cart.add(bookService.findBookById(id),count);
             request.getSession().setAttribute("cart", cart);
             return new Msg(1,"添加成功");

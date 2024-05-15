@@ -68,7 +68,9 @@ function addToCart(){
 	 		success:function(data){
 	 			if(data.code==0){
 	 				alert(data.obj);
-	 			}
+	 			}else if (data.code==1){
+                     alert(data.obj);
+                }
 	 		}
 	 	});
  }

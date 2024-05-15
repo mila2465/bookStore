@@ -12,5 +12,4 @@ public class OrderItem {
 	private String book_id;
 	
 	private Book book;
-		
 }

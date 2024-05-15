@@ -45,6 +45,7 @@ public class Cart {
 		this.price = totalprice;
 		return price;
 	}
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
